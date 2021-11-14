@@ -17,7 +17,10 @@ public class lab2 {
         //Comparison();
 
         //task5: является ли число 3 как первый или последний элемент массива целых чисел
-        ArrayCheck();
+        //ArrayCheck();
+
+        //task6: проверить, что массив содержит число 1 или 3
+        ArrayCheckOneOrThree();
     }
 
     public static void CountOdd() {
@@ -95,6 +98,29 @@ public class lab2 {
         }
         else {
             System.out.println("Результат: false");
+        }
+    }
+    public static void ArrayCheckOneOrThree(){
+        int[] numArray = new int[4];
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите четыре числа:");
+        for (int i = 0; i< numArray.length; i++){
+            numArray[i] = scanner.nextInt();
+        }
+        String a = "";
+        for (int i=0; i<4; i++) {
+            a += numArray[i] + " ";
+            System.out.println("array:" + a);
+        }
+        boolean NumChecked;
+        for (int j: numArray) {
+            if (j == 1 || j == 3) {
+                NumChecked = true;
+            }
+            else{
+                NumChecked = false;
+            }
+            System.out.println("В массиве имеется 1 или 3: "+ NumChecked);
         }
     }
 }
