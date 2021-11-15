@@ -10,13 +10,14 @@ public class lab3 {
         //IncSort(CreateArr());
 
         //task2: считывает длину массива
-        ArrLength(CreateArr());
+        ArrLength(new int[] {1, 2, 3, 4});
     }
 
     public static int[] CreateArr() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите значения массива:");
-        int[] myArray = new int[4];
+        int size = scanner.nextInt();
+        int[] myArray = new int[size];
 
         for (int i = 0; i < myArray.length; i++) {
             myArray[i] = scanner.nextInt();
