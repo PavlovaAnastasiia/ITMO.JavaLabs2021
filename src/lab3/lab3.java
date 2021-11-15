@@ -84,7 +84,7 @@ public class lab3 {
 
     public static void firstUniqueVar(int[] myArray) {
 
-        boolean isUnique = false;
+        boolean isNotUnique = false;
         int uniqueVal = 0;
         for (int i = 0; i < myArray.length; i++) {
             for (int j = 0; j < myArray.length; j++) {
@@ -92,17 +92,17 @@ public class lab3 {
                     continue;
                 }
                 if (myArray[i] == myArray[j]) {
-                    isUnique = true;
+                    isNotUnique = true;
                     break;
                 }
             }
-            if (!isUnique) {
+            if (!isNotUnique) {
                 uniqueVal = myArray[i];
                 break;
             }
-            isUnique = false;
+            isNotUnique = false;
         }
-        if (!isUnique) {
+        if (!isNotUnique) {
             System.out.println("Первое уникальное число: " + uniqueVal);
         } else {
             System.out.println("Массив не содержит уникальных значений");
