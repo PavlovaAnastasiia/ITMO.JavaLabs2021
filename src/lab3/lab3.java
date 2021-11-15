@@ -16,7 +16,12 @@ public class lab3 {
         //SwitchFirstAndLast(CreateArr());
 
         //task4: найти первое уникальное число
-        firstUniqueVar(CreateArr());
+        //firstUniqueVar(CreateArr());
+
+        //task5: вычистить н-ое число Фибоначчи
+        //FibonacciNum(15);
+
+        //task6: сортировка слиянием
 
     }
 
@@ -108,5 +113,18 @@ public class lab3 {
             System.out.println("Массив не содержит уникальных значений");
         }
     }
-}
+    public static void FibonacciNum (int n){
+        int num1 = 1;
+        int num2 = 1;
+        int res;
+        System.out.println(num1);
+        System.out.println(num2);
+        for (int i = 0; i <= n; i++){
+            res = num1 + num2;
+            System.out.println(res + "");
+            num1 = num2;
+            num2 = res;
+        }
+        System.out.println();
+    }
 
