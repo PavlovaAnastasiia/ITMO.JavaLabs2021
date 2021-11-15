@@ -16,7 +16,7 @@ public class lab3 {
         //SwitchFirstAndLast(CreateArr());
 
         //task4: найти первое уникальное число
-
+        firstUniqueVar(CreateArr());
 
     }
 
@@ -33,24 +33,24 @@ public class lab3 {
         return myArray;
     }
 
-    public static void IncSort(int[] myArray){ //1 вариант 1 задания
-        for (int i = 0; i< myArray.length; i++){
+    public static void IncSort(int[] myArray) { //1 вариант 1 задания
+        for (int i = 0; i < myArray.length; i++) {
             int min = myArray[i]; //предполагаем, что первый элемент самый маленький
             boolean isIncSort = true;
-            for (int j = i +1; j < myArray.length; j++){
-                if (myArray[j] < min){
+            for (int j = i + 1; j < myArray.length; j++) {
+                if (myArray[j] < min) {
                     isIncSort = false;
                     break;
                 }
             }
-         if(!isIncSort){
-             System.out.println("Please, try again");
-         }
-         else{
-             System.out.println("OK");
-         }
+            if (!isIncSort) {
+                System.out.println("Please, try again");
+            } else {
+                System.out.println("OK");
+            }
         }
     }
+
     public static void IncSort1(int[] myArray) {//2 вариант 1 задания
         int i;
         boolean isIncSort = true;
@@ -66,21 +66,47 @@ public class lab3 {
             System.out.println("OK");
         }
     }
-    public static void ArrLength(int[] myArray){ // второе задание
+
+    public static void ArrLength(int[] myArray) { // второе задание
         System.out.println("Array length: " + myArray.length);
         System.out.println("Result: " + Arrays.toString(myArray));
     }
-    public static void SwitchFirstAndLast(int[] myArray){
-        System.out.println("Array 1: "+ Arrays.toString(myArray));
+
+    public static void SwitchFirstAndLast(int[] myArray) {
+        System.out.println("Array 1: " + Arrays.toString(myArray));
 
         int var = myArray[0];
-        myArray[0] = myArray[myArray.length-1];
-        myArray[myArray.length-1] = var;
+        myArray[0] = myArray[myArray.length - 1];
+        myArray[myArray.length - 1] = var;
 
         System.out.println("Array 2:" + Arrays.toString(myArray));
     }
-    public static void firstUniqueVar (int[] myArray){
 
+    public static void firstUniqueVar(int[] myArray) {
+
+        boolean isUnique = false;
+        int uniqueVal = 0;
+        for (int i = 0; i < myArray.length; i++) {
+            for (int j = 0; j < myArray.length; j++) {
+                if (i == j) {
+                    continue;
+                }
+                if (myArray[i] == myArray[j]) {
+                    isUnique = true;
+                    break;
+                }
+            }
+            if (!isUnique) {
+                uniqueVal = myArray[i];
+                break;
+            }
+            isUnique = false;
+        }
+        if (!isUnique) {
+            System.out.println("Первое уникальное число: " + uniqueVal);
+        } else {
+            System.out.println("Массив не содержит уникальных значений");
+        }
     }
 }
 
