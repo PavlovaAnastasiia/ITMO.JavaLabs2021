@@ -20,5 +20,7 @@ public class lab6 {
         //task4
         Plane.Wing plane1 = new Plane.Wing(98.0);
         System.out.println(plane1);
+        Plane.Wing plane2 = new Plane.Wing(100.5);
+        System.out.println(plane2);
     }
 }
