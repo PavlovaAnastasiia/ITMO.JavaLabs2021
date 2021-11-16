@@ -17,7 +17,15 @@ public class lab4 {
         //Censorship();
 
         //task4: найти количество вхождений одной (являющейся подстрокой) в другую
-        countRepeat();
+        //countRepeat();
+
+        //task5: инвертировать слова в строке
+        String text = "Sample Output: \n" +
+                "The given string is: This is a test string \n" +
+                "The string reversed word by word is: \n" +
+                "sihT si a tset gnirts";
+        invertSent(text);
+        //нормально ли, что метод читает строки с конца, тем самым меняет их месстами?
     }
     public static void longestLine(){
         String[] words = {"кот","собака","мышь","хомяк"};
@@ -66,5 +74,10 @@ public class lab4 {
             }
         }
         System.out.println("Количество вхождений: " + count);
+    }
+    public static void invertSent (String text){
+        StringBuffer buffer = new StringBuffer(text);
+        buffer.reverse();
+        System.out.println(buffer);
     }
 }
