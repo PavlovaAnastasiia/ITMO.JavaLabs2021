@@ -14,7 +14,10 @@ public class lab4 {
         isPalindrome1(word);*/
 
         //task3:заменяет в тексте слово "бяка"
-        Censorship();
+        //Censorship();
+
+        //task4: найти количество вхождений одной (являющейся подстрокой) в другую
+        countRepeat();
     }
     public static void longestLine(){
         String[] words = {"кот","собака","мышь","хомяк"};
@@ -33,9 +36,9 @@ public class lab4 {
     public static void isPalindrome1(String word){
         String reverse = "";
         for (int i = word.length()-1; i >= 0; i--){
-            reverse = reverse + word.charAt(i); //возвращает символ, расположенный рл указанному индексу строки
+            reverse = reverse + word.charAt(i); //возвращает символ, расположенный по указанному индексу строки
         }
-        if(word.equals(reverse)){
+        if(word.equals(reverse)){ //сравнивает строку с указанным объектом
             System.out.println("Слово - палиндром");
         }
         else{
@@ -48,5 +51,20 @@ public class lab4 {
         String  sentence = sc.nextLine();
         String bakaCensorship = sentence.replace("бяка", "[вырезано цензурой]");
         System.out.println(bakaCensorship);
+    }
+    public static void countRepeat(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите два предложения: ");
+        String sentence1 = sc.nextLine();
+        String sentence2 = sc.nextLine();
+
+        int count = 0;
+        for (int i = 0; i<= sentence1.length() - sentence2.length(); i++){
+            String substring = sentence1.substring(i, i + sentence2.length()); //.substring возвращает новую строку, которая является подстрокой данной стоки
+            if (substring.equals(sentence2)){
+                count += 1;
+            }
+        }
+        System.out.println("Количество вхождений: " + count);
     }
 }
