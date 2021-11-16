@@ -8,11 +8,13 @@ public class lab4 {
         //longestLine();
 
         //tak2: является ли слово полиндромом
-        Scanner sc = new Scanner(System.in);
+        /*Scanner sc = new Scanner(System.in);
         System.out.println("Введите слово: ");
         String  word = sc.next();
-        isPalindrome1(word);
+        isPalindrome1(word);*/
 
+        //task3:заменяет в тексте слово "бяка"
+        Censorship();
     }
     public static void longestLine(){
         String[] words = {"кот","собака","мышь","хомяк"};
@@ -39,5 +41,12 @@ public class lab4 {
         else{
             System.out.println("Слово не яляется палиндромом");
         }
+    }
+    public static void Censorship(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите предложение: ");
+        String  sentence = sc.nextLine();
+        String bakaCensorship = sentence.replace("бяка", "[вырезано цензурой]");
+        System.out.println(bakaCensorship);
     }
 }
