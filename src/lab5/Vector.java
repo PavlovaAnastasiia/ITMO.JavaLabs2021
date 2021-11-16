@@ -1,5 +1,7 @@
 package lab5;
 
+import java.util.Random;
+
 public class Vector { //описывает вектор в трехмерном пространстве
 
     int x;
@@ -30,6 +32,7 @@ public class Vector { //описывает вектор в трехмерном 
 
         //task6: метод для суммы и разности
         SumNeg(vector1,vector2);
+
     }
 
     public static double vectLength(Vector vector1){
