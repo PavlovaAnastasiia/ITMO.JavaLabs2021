@@ -8,8 +8,7 @@ public class Main {
         Pyramid pyramid = new Pyramid(30,12,4);
         Cylinder cylinder = new Cylinder(40,10,5);
 
-        System.out.println(box.Add1(ball));
-        System.out.println(box.Add1(pyramid));
-        System.out.println(box.Add1(cylinder));
+        System.out.println(box.Add(ball));
+        System.out.println(box.Add(pyramid));
     }
 }
