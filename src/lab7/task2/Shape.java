@@ -1,6 +1,6 @@
 package lab7.task2;
 
-public class Shape {
+public abstract class Shape {
     protected double volume;
 
     public double getVolume(){
@@ -10,4 +10,5 @@ public class Shape {
         this.volume = volume;
     }
 
+    public abstract String ToString();
 }

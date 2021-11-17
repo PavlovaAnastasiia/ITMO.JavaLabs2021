@@ -9,4 +9,10 @@ public class Pyramid extends Shape{
         this.s = s;
         this.h = h;
     }
+    @Override
+    public String ToString(){
+        return "s = " + s + ", \n" +
+                "h = " + h + ", \n" +
+                "volume = " + volume;
+    }
 }
