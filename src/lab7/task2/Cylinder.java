@@ -7,4 +7,9 @@ public class Cylinder extends SolidOfRevolution{
         super(volume, radius);
         this.height = height;
     }
+
+    @Override
+    public String ToString() {
+        return "Радиус цилиндра: " + radius + ", объем цилиндра: " + volume +  ", высота цилиндра: " + height;
+    }
 }
