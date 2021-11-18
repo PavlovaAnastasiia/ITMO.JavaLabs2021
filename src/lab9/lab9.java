@@ -14,6 +14,9 @@ public class lab9 {
         //task3: метод, который, в двумерном массиве (матрице) ищет строку, сумма
         //элементов которой является максимальной среди всех строк матрицы.
         //biggestSumLineTest();
+
+        //task4: Двумерный массив MxN заполнить случайными символами алфавита
+        createCharMatrixTest();
     }
 
     public static void findMax() throws Exception {
@@ -23,8 +26,8 @@ public class lab9 {
 
         System.out.println(Arrays.deepToString(twoDimArray)); // для отображения двумерного массива метод deepToString()
         int maxValue = twoDimArray[0][0];
-        for (int i = 0; i < twoDimArray.length; i++) { //идем по столбцам
-            for (int j = 0; j < twoDimArray[i].length; j++) { // идем по строкам
+        for (int i = 0; i < twoDimArray.length; i++) { //идем по строкам
+            for (int j = 0; j < twoDimArray[i].length; j++) { // идем по столбцам
                 if (maxValue < twoDimArray[i][j]) {
                     maxValue = twoDimArray[i][j];
                 }
@@ -119,6 +122,39 @@ public class lab9 {
         try {
             biggestSumLine();
         } catch (Exception exception) {
+            System.out.println(exception);
+        }
+    }
+    public static char[][] createCharMatrix(int line, int column) throws Exception {
+        if(line < 2) throw new Exception("Матрица не может содержать менее 2 строк");
+        if(column == 0) throw new Exception("Матрица не может содержать меньше одной колонны");
+
+        char[][] twoDimArray = new char[line][column];
+        for (int i = 0; i <twoDimArray.length ; i++) {
+            for (int j = 0; j < twoDimArray[i].length; j++) {
+                twoDimArray[i][j] = (char) ((Math.random() * 26)+ 96);
+            }
+        }
+        return twoDimArray;
+    }
+    public static void createCharMatrixTest(){
+        System.out.println("Созданние символьного двумерного массива: ");
+
+        //пример1: вернет символьную матрицу
+        try {
+            char[][] twoDimArray = createCharMatrix(2,4);
+            System.out.print("Пример 1:");
+            System.out.println(Arrays.deepToString(twoDimArray));
+        }
+        catch (Exception exception){
+            System.out.println(exception);
+        }
+        //пример2: вернет ошибку
+        try {
+            char[][] twoDimArray = createCharMatrix(1,4);
+            System.out.println(Arrays.deepToString(twoDimArray));
+        }
+        catch (Exception exception){
             System.out.println(exception);
         }
     }
