@@ -1,9 +1,6 @@
 package lab10;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
+import java.util.*;
 
 public class lab10 {
     public static void main(String[] args){
@@ -18,7 +15,9 @@ public class lab10 {
 
         //task4: Метод получает на вход массив элементов типа К. Вернуть нужно объект Map<K, Integer>, где K — Значение из массива, а Integer
         //количество вхождений в массив: <K> Map<K, Integer> arrayToMap(K[] ks);
-
+        Integer[] array = {1, 2, 1, 1, 5, 7, 2, 5};
+        Map<Integer, Integer> map =  arrayToMap(array);
+        System.out.println(map);
 
     }
     public static void returnNoDuplicates (){
@@ -90,5 +89,20 @@ public class lab10 {
         System.out.println("Предполагаю, что добавление в LinkedList заняло значительно больше времени, так как " +
                 "\n каждый объект, помещенный в связанный список, является узлом." +
                 "\n Каждый узел содержит элемент, ссылку на предыдущий и следующий узел. ");
+    }
+
+    public static <K> Map<K, Integer> arrayToMap(K[] array) {
+
+        Map<K, Integer> map = new HashMap<>();
+        for (int i = 0; i < array.length; i++) {
+            if (map.containsKey(array[i])) { //проверяет наличие какого-то ключа
+                int temp = map.get(array[i]) +1;
+                map.put(array[i], temp);
+            }
+            else {
+                map.put(array[i], 1);
+            }
+        }
+        return map;
     }
 }
