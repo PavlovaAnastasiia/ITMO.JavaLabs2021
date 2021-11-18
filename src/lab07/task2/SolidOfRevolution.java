@@ -1,4 +1,4 @@
-package lab7.task2;
+package lab07.task2;
 
 public abstract class SolidOfRevolution extends Shape{
     protected double radius;

@@ -1,6 +1,4 @@
-package lab5;
-
-import java.util.Random;
+package lab05;
 
 public class Vector { //описывает вектор в трехмерном пространстве
 

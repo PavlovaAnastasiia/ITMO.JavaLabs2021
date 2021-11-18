@@ -1,7 +1,6 @@
-package lab6;
+package lab06;
 
 import java.time.LocalDate;
-import java.util.Scanner;
 
 public class Home {
     int floors;

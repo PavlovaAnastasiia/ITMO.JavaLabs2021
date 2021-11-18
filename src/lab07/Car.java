@@ -1,4 +1,4 @@
-package lab7;
+package lab07;
 
 public class Car {
     public int weight;

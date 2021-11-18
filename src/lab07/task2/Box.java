@@ -1,4 +1,4 @@
-package lab7.task2;
+package lab07.task2;
 
 public class Box extends Shape{
     double shapeBoxVolume = 0; //текущий занятый объем в коробке
