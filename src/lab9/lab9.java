@@ -1,7 +1,6 @@
 package lab9;
 
 import java.util.Arrays;
-import java.util.NoSuchElementException;
 
 public class lab9 {
 
