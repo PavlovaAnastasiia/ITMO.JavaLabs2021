@@ -5,13 +5,13 @@ import java.util.*;
 public class lab10 {
     public static void main(String[] args){
         //task1: на входе получает коллекцию объектов, а возвращает коллекцию уже без дубликатов
-        //returnNoDuplicates();
+        returnNoDuplicates();
 
         //task2: Напишите метод, который добавляет 1млн элементов в ArrayList и LinkedList.
         // Напишите метод, который выбирает из заполненного списка элемент наугад 10000 раз.
         // Замерьте время, которое потрачено на это. Сравните результаты, предположите, почему они именно такие.
-        //System.out.println(add1MilElements());
-        //chooseElements();
+        System.out.println(add1MilElements());
+        chooseElements();
 
         //task4: Метод получает на вход массив элементов типа К. Вернуть нужно объект Map<K, Integer>, где K — Значение из массива, а Integer
         //количество вхождений в массив: <K> Map<K, Integer> arrayToMap(K[] ks);
