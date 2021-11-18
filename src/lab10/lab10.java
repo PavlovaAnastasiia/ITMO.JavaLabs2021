@@ -1,12 +1,25 @@
 package lab10;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 public class lab10 {
     public static void main(String[] args){
         //task1: на входе получает коллекцию объектов, а возвращает коллекцию уже без дубликатов
-        returnNoDuplicates();
+        //returnNoDuplicates();
+
+        //task2: Напишите метод, который добавляет 1млн элементов в ArrayList и LinkedList.
+        // Напишите метод, который выбирает из заполненного списка элемент наугад 10000 раз.
+        // Замерьте время, которое потрачено на это. Сравните результаты, предположите, почему они именно такие.
+        //System.out.println(add1MilElements());
+        //chooseElements();
+
+        //task4: Метод получает на вход массив элементов типа К. Вернуть нужно объект Map<K, Integer>, где K — Значение из массива, а Integer
+        //количество вхождений в массив: <K> Map<K, Integer> arrayToMap(K[] ks);
+
+
     }
     public static void returnNoDuplicates (){
 
@@ -35,5 +48,47 @@ public class lab10 {
 
         stringList.removeAll(stringList1);
         System.out.println("В конечном списке присутсвуют слова: " + stringList1);
+    }
+    public static String add1MilElements(){
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        LinkedList<Integer> linkedList = new LinkedList<>();
+
+        int quantityElements = 1000000;
+        for (int i = 0; i < quantityElements; i++) {
+            arrayList.add((int) Math.random());
+            linkedList.add((int) Math.random());
+        }
+        return "Элементы были добавлены";
+    }
+    public static void chooseElements(){
+        ArrayList<Double> arrayList = new ArrayList<>();
+        LinkedList<Double> linkedList = new LinkedList<>();
+
+        final int quantityElements = 1000000;
+        for (int i = 0; i < quantityElements; i++) {
+            arrayList.add(Math.random());
+            linkedList.add(Math.random());
+        }
+        System.out.println("Элементы были добавлены");
+
+        final int chooseTimes = 10000;
+        long startTime = System.currentTimeMillis();
+        for (int i = 0; i < chooseTimes; i++) {
+            arrayList.get((int) (Math.random() * (quantityElements - 1)));
+        }
+        long finish = System.currentTimeMillis();
+        long totalTime = finish - startTime;
+        System.out.println("При добавлении в ArrayList было занято времени: " + totalTime);
+
+        long startTime1 = System.currentTimeMillis();
+        for (int i = 0; i < chooseTimes; i++) {
+            linkedList.get((int) (Math.random() * (quantityElements - 1)));
+        }
+        long finish1 = System.currentTimeMillis();
+        long totalTime1 = finish1 - startTime1;
+        System.out.println("При добавлении в LinkedList было занято времени: " + totalTime1);
+        System.out.println("Предполагаю, что добавление в LinkedList заняло значительно больше времени, так как " +
+                "\n каждый объект, помещенный в связанный список, является узлом." +
+                "\n Каждый узел содержит элемент, ссылку на предыдущий и следующий узел. ");
     }
 }
