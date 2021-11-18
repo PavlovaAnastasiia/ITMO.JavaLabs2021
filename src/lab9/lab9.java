@@ -13,9 +13,8 @@ public class lab9 {
 
         //task3: метод, который, в двумерном массиве (матрице) ищет строку, сумма
         //элементов которой является максимальной среди всех строк матрицы.
-
+        biggestSumLine();
     }
-
 
     public static void findMax() throws Exception {
 
@@ -24,8 +23,8 @@ public class lab9 {
 
         System.out.println(Arrays.deepToString(twoDimArray)); // для отображения двумерного массива метод deepToString()
         int maxValue = twoDimArray[0][0];
-        for (int i = 0; i < twoDimArray.length; i++) { //идем по строкам
-            for (int j = 0; j < twoDimArray[i].length; j++) { // идем по столбцам
+        for (int i = 0; i < twoDimArray.length; i++) { //идем по столбцам
+            for (int j = 0; j < twoDimArray[i].length; j++) { // идем по строкам
                 if (maxValue < twoDimArray[i][j]) {
                     maxValue = twoDimArray[i][j];
                 }
@@ -56,8 +55,8 @@ public class lab9 {
         //вариант3: выдаст, что двумерный массив не является квадратным
         int[][] twoDimArray = {{5, 7}, {7, 0}};
 
-        for (int i = 0; i < twoDimArray.length; i++) { //идем по строкам
-            for (int j = 0; j < twoDimArray[i].length; j++) { // идем по столбцам
+        for (int i = 0; i < twoDimArray.length; i++) {
+            for (int j = 0; j < twoDimArray[i].length; j++) {
                 if (twoDimArray.length >=7 && twoDimArray[i].length>=7){
                     throw new Exception("Массив слишком большой, невозможно проверить его на крадратичность.");
                 }
@@ -82,8 +81,16 @@ public class lab9 {
         }
     }
 
-    public static void biggestSumLine() throws Exception{
+    public static void biggestSumLine(){
         int [][] twoDimArray = {{5,7,3,17}, {7,0,1,12}, {8,1,2,3}};
+        System.out.println("Двумерный массив: ");
+
+        for (int i = 0; i < twoDimArray.length; i++){
+            System.out.println();
+            for (int j = 0; j < twoDimArray[i].length; j++) {
+                System.out.print(twoDimArray[i][j] + " ");
+            }
+        }
 
 
     }
