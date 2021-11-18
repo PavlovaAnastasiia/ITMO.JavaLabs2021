@@ -13,7 +13,7 @@ public class lab9 {
 
         //task3: метод, который, в двумерном массиве (матрице) ищет строку, сумма
         //элементов которой является максимальной среди всех строк матрицы.
-        biggestSumLine();
+        //biggestSumLineTest();
     }
 
     public static void findMax() throws Exception {
@@ -81,8 +81,14 @@ public class lab9 {
         }
     }
 
-    public static void biggestSumLine(){
-        int [][] twoDimArray = {{5,7,3,17}, {7,0,1,12}, {8,1,2,3}};
+    public static void biggestSumLine() throws Exception{
+        //красивый вывод матрицы
+
+        //пример1: выведет макс сумму в некоторой строке
+        //int [][] twoDimArray = { {7,0,1,12},{5,7,3,17}, {8,1,2,3}};
+        //пример2: выведет ошибку
+        int [][] twoDimArray = { {0,0},{0,0}, {0,0}};
+
         System.out.println("Двумерный массив: ");
 
         for (int i = 0; i < twoDimArray.length; i++){
@@ -91,7 +97,29 @@ public class lab9 {
                 System.out.print(twoDimArray[i][j] + " ");
             }
         }
+        System.out.println();
 
+        //поиск максимальной суммы
+        int sumLineMax = 0;
+        for (int i = 0; i <twoDimArray.length ; i++) {
+            int sumLine = 0;
+            for (int j = 0; j < twoDimArray[i].length; j++) {
+                sumLine = sumLine + twoDimArray[i][j]; //считает сумму строки
+            }
+            if(sumLineMax<sumLine){
+                sumLineMax = sumLine;
+            }
+        }
+        if(sumLineMax == 0) throw new Exception("Нельзя найти наибольшую сумму в любой из строк, сумма в каждой строке равна нулю!");
+        System.out.println("\n Максимальная сумма в некоторой строке равна " + sumLineMax);
+    }
 
+    public static void  biggestSumLineTest() {
+        System.out.println("\n Поиск максимальной суммы некоторой строки в матрице");
+        try {
+            biggestSumLine();
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
     }
 }
