@@ -9,9 +9,12 @@ public class lab11 {
     public static void main(String[] args){
         //task1: метод, который читает текстовый файл и возвращает его в виде списка строк.
         //readFileTest();
+
         //task2: метод, который записывает в файл строку, переданную параметром.
-        writeTextTest();
+        //writeTextTest();
+
         //task3: используя решение 1 и 2, напишите метод, который склеивает два текстовый файла один.
+        //mergeFiles();
 
         //task4: метод для копирования файла (побайтно, или массивами байт).
 
@@ -62,5 +65,21 @@ public class lab11 {
                 "\n в целевой поток данные, которые могут кэшироваться в текущем потоке." +
                 "\n Актуально при использовании буферизации и/или нескольких объектах потоков, организованных в цепочку."));
             System.out.println("Данные были дбавлены!");
+    }
+
+    public static boolean mergeFiles (String FileName,String FileName1,String FileName2){
+        String text = readFile(FileName) + "\n" + readFile(FileName1);
+        if (writeText(FileName2,text)){
+            System.out.println("Текст записан в новый файл!");
+            return true;
+        }
+        else {
+            System.out.println("Текст не записан в новый файл, попробуйте снова.");
+            return false;
+        }
+    }
+    public static void mergeFiles(){
+        mergeFiles("C:\\JavaLabsItmo\\src\\lab11\\text.file",
+                "C:\\JavaLabsItmo\\src\\lab11\\textFile2","C:\\JavaLabsItmo\\src\\lab11\\NewFile");
     }
 }
