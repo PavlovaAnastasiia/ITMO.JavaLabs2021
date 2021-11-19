@@ -1,6 +1,7 @@
 package lab11;
 
 import java.io.*;
+import java.util.List;
 
 public class lab11 {
     public static void main(String[] args) throws IOException {
@@ -14,10 +15,11 @@ public class lab11 {
         //mergeFiles();
 
         //task4: метод для копирования файла (побайтно, или массивами байт).
-        copyTextByteText();
+        //copyTextByteText();
 
         //task5:  метод, который в каталоге ищет текстовые файлы, в которых содержится определенная строка,
         // и которая возвращает список имен таких файлов. (FilenameFilter)
+        findText("src/lab11", "объект File"); //почему-то не работает должгым образом
     }
 
     public static String readFile(String fileName) {
@@ -27,25 +29,25 @@ public class lab11 {
 
         String textRead = "";
 
-       try(FileReader reader = new FileReader(fileName)){
+        try (FileReader reader = new FileReader(fileName)) {
             int c;
-           while((c = (reader.read()))!=-1){ // посимвольное чтение
-               textRead += (char)c;
-           }
-       }
-       catch (IOException exception) {
+            while ((c = (reader.read())) != -1) { // посимвольное чтение
+                textRead += (char) c;
+            }
+        } catch (IOException exception) {
 
-           System.out.println(exception.getMessage());
-       }
+            System.out.println(exception.getMessage());
+        }
         System.out.println(textRead);
         return textRead;
     }
-    public static void readFileTest(){
+
+    public static void readFileTest() {
         String readText = readFile("C:\\JavaLabsItmo\\src\\lab11\\text.file");
         System.out.println("\n Текст из файла: " + readText);
     }
 
-    public static boolean writeText(String FileName, String data){
+    public static boolean writeText(String FileName, String data) {
         File file = new File(FileName);
         FileWriter fileWriter = null;
         try {
@@ -53,35 +55,37 @@ public class lab11 {
             fileWriter.write(data); //запись строки в буфер
             fileWriter.flush(); //запись из буфера в файл
             fileWriter.close();
-        }
-        catch (IOException exception){
+        } catch (IOException exception) {
             System.out.println(exception.getMessage());
         }
         return true;
     }
-    public static void writeTextTest(){
-        if (writeText("C:\\JavaLabsItmo\\src\\lab11\\textFile2","Метод flush() используется, чтобы принудительно записать" +
+
+    public static void writeTextTest() {
+        if (writeText("C:\\JavaLabsItmo\\src\\lab11\\textFile2", "Метод flush() используется, чтобы принудительно записать" +
                 "\n в целевой поток данные, которые могут кэшироваться в текущем потоке." +
-                "\n Актуально при использовании буферизации и/или нескольких объектах потоков, организованных в цепочку."));
-            System.out.println("Данные были дбавлены!");
+                "\n Актуально при использовании буферизации и/или нескольких объектах потоков, организованных в цепочку."))
+            ;
+        System.out.println("Данные были дбавлены!");
     }
 
-    public static boolean mergeFiles (String FileName,String FileName1,String FileName2){
+    public static boolean mergeFiles(String FileName, String FileName1, String FileName2) {
         String text = readFile(FileName) + "\n" + readFile(FileName1);
-        if (writeText(FileName2,text)){
+        if (writeText(FileName2, text)) {
             System.out.println("Текст записан в новый файл!");
             return true;
-        }
-        else {
+        } else {
             System.out.println("Текст не записан в новый файл, попробуйте снова.");
             return false;
         }
     }
-    public static void mergeFiles(){
+
+    public static void mergeFiles() {
         mergeFiles("C:\\JavaLabsItmo\\src\\lab11\\text.file",
-                "C:\\JavaLabsItmo\\src\\lab11\\textFile2","C:\\JavaLabsItmo\\src\\lab11\\NewFile");
+                "C:\\JavaLabsItmo\\src\\lab11\\textFile2", "C:\\JavaLabsItmo\\src\\lab11\\NewFile");
     }
-    public static void copyTextByte (String oldFile, String newFile) throws IOException {
+
+    public static void copyTextByte(String oldFile, String newFile) throws IOException {
         File file = new File(oldFile);
         File file1 = new File(newFile);
 
@@ -91,14 +95,44 @@ public class lab11 {
         FileOutputStream outputStream = new FileOutputStream(file1);
 
         int read;
-        while ((read = inputStream.read()) != -1){ // Вызов метода read () для чтения текстового содержимого побайтно в read
+        while ((read = inputStream.read()) != -1) { // Вызов метода read () для чтения текстового содержимого побайтно в read
             outputStream.write(read); // Вызов метода записи для вывода байта за байтом в целевой файл
         }
         inputStream.close();
         outputStream.close();
     }
+
     public static void copyTextByteText() throws IOException {
-       copyTextByte("C:\\JavaLabsItmo\\src\\lab11\\NewFile", "C:\\JavaLabsItmo\\src\\lab11\\newFile1");
-       System.out.println("Текст был скопирован в новый файл!");
+        copyTextByte("C:\\JavaLabsItmo\\src\\lab11\\NewFile", "C:\\JavaLabsItmo\\src\\lab11\\newFile1");
+        System.out.println("Текст был скопирован в новый файл!");
     }
+
+   public static void findText(String catalogName, String text){
+        File file = new File(catalogName);
+        if(!file.exists()){
+            System.out.println("Каталога не существует, попробуйте снова");}
+
+            File[] listFiles = file.listFiles(new FileNameFilter(text));
+       if(listFiles.length == 0){
+           System.out.println("Каталог не содержит файлов с нужным текстом");
+       }
+       else{
+           for(File f : listFiles){
+                System.out.println("Файл, содержащий выбранный текст: "+ f.getName());
+            }
+        }
+
+   }
+   public static class FileNameFilter implements java.io.FilenameFilter {
+       private String extension;
+
+       public FileNameFilter(String extension) {
+           this.extension = extension;
+       }
+       @Override
+       public boolean accept(File dir, String name) {
+           return false;
+       }
+   }
 }
+
