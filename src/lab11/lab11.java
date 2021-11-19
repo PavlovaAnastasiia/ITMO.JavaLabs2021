@@ -1,12 +1,9 @@
 package lab11;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class lab11 {
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
         //task1: метод, который читает текстовый файл и возвращает его в виде списка строк.
         //readFileTest();
 
@@ -17,6 +14,7 @@ public class lab11 {
         //mergeFiles();
 
         //task4: метод для копирования файла (побайтно, или массивами байт).
+        copyTextByteText();
 
         //task5:  метод, который в каталоге ищет текстовые файлы, в которых содержится определенная строка,
         // и которая возвращает список имен таких файлов. (FilenameFilter)
@@ -54,6 +52,7 @@ public class lab11 {
             fileWriter = new FileWriter(file);
             fileWriter.write(data); //запись строки в буфер
             fileWriter.flush(); //запись из буфера в файл
+            fileWriter.close();
         }
         catch (IOException exception){
             System.out.println(exception.getMessage());
@@ -81,5 +80,25 @@ public class lab11 {
     public static void mergeFiles(){
         mergeFiles("C:\\JavaLabsItmo\\src\\lab11\\text.file",
                 "C:\\JavaLabsItmo\\src\\lab11\\textFile2","C:\\JavaLabsItmo\\src\\lab11\\NewFile");
+    }
+    public static void copyTextByte (String oldFile, String newFile) throws IOException {
+        File file = new File(oldFile);
+        File file1 = new File(newFile);
+
+        //InputStream – это базовый класс для потоков ввода, т.е. чтения. Соответственно, он описывает базовые методы для работы с байтовыми потоками данных.
+        //OutputStream - это класс в java.io пакет, который является базовым классом, представляющим поток bytes (stream of bytes) для записи bytes в файл.
+        FileInputStream inputStream = new FileInputStream(file);
+        FileOutputStream outputStream = new FileOutputStream(file1);
+
+        int read;
+        while ((read = inputStream.read()) != -1){ // Вызов метода read () для чтения текстового содержимого побайтно в read
+            outputStream.write(read); // Вызов метода записи для вывода байта за байтом в целевой файл
+        }
+        inputStream.close();
+        outputStream.close();
+    }
+    public static void copyTextByteText() throws IOException {
+       copyTextByte("C:\\JavaLabsItmo\\src\\lab11\\NewFile", "C:\\JavaLabsItmo\\src\\lab11\\newFile1");
+       System.out.println("Текст был скопирован в новый файл!");
     }
 }
