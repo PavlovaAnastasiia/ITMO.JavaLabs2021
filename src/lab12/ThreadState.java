@@ -8,7 +8,7 @@ class ThreadState implements Runnable {
 
         // Поток еще не запущен, вывести состояние потока
         Thread.State ts = myThread.getState();
-        System.out.println("Состояние потока в конструкторе: " +  lab12.threadState(ts));
+        System.out.println("Состояние " + Thread.currentThread().getName() + " в конструкторе: " +  lab12.threadState(ts));
 
         myThread.start();
     }

@@ -10,19 +10,20 @@ public class lab12 {
         //task2: Выведете состояние потока перед его запуском, после запуска и во время выполнения.
         //ThreadState threadState1 = new ThreadState("пример потока");
 
-        Thread thread = Thread.currentThread();
+        /*Thread thread = Thread.currentThread();
         try {
             Thread.sleep(3000);
             System.out.println("Состояние потока после вызова sleep(): " + lab12.threadState(thread.getState()));
         }
         catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
         //task3: Напишите программу, в которой запускается 100 потоков, каждый из которых
         //вызывает метод increment() 1000 раз.
         //После того, как потоки завершат работу, проверьте, чему равен count .
-        //Если обнаружилась проблема, предложите ее решение.
+
+
 
         //task4: Напишите программу, в которой создаются два потока, каждый из которых выводит
         //по очереди на консоль своё имя.
@@ -59,9 +60,16 @@ public class lab12 {
             return "Поток приостановлен.";
         }
         if (ts == Thread.State.TIMED_WAITING){
-            return "TIMED_WAITING";
+            return "Ожидает определенное время";
         }
         return "WAITING";
+    }
+
+    public static void ThreadCounterCountTest (){
+        //Counter counter = new Counter();
+        for (int i=1; i<11;i++){
+            new ThreadCounterCount("номер" + i).start();
+        }
     }
 }
 
