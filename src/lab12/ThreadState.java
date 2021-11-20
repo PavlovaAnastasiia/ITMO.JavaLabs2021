@@ -1,4 +1,4 @@
-package Lab12;
+package lab12;
 
 class ThreadState implements Runnable {
     Thread myThread;

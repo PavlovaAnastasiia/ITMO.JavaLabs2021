@@ -1,4 +1,4 @@
-package Lab12;
+package lab12;
 
 public class TwoThreads extends Thread{
     // общий для двух потоков lock

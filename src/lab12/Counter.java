@@ -1,4 +1,4 @@
-package Lab12;
+package lab12;
 
 public class Counter {
     int count = 0;
