@@ -1,4 +1,4 @@
-package lab12;
+package Lab12;
 
 public class ThreadCounterCount extends Thread{
     //task3
