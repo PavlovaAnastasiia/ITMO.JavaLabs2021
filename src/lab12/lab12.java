@@ -1,11 +1,11 @@
 package lab12;
 
 public class lab12 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //task1: Напишите программу, в которой запускается 10 потоков и каждый из них выводит
         //числа от 0 до 100.
         //for (int i=1; i<11;i++){
-        //    new RunTenThreads("номер "+i).start();}
+        //   new RunTenThreads("номер "+i).start();}
 
         //task2: Выведете состояние потока перед его запуском, после запуска и во время выполнения.
         //ThreadState threadState1 = new ThreadState("пример потока");
@@ -21,55 +21,60 @@ public class lab12 {
 
         //task3: Напишите программу, в которой запускается 100 потоков, каждый из которых
         //вызывает метод increment() 1000 раз.
-        //После того, как потоки завершат работу, проверьте, чему равен count .
-
-
+        //После того, как потоки завершат работу, проверьте, чему равен count.
+        //ThreadCounterCountTest();
 
         //task4: Напишите программу, в которой создаются два потока, каждый из которых выводит
         //по очереди на консоль своё имя.
         //Начать можно с написания своего класс-потока, который выводит в бесконечном
         //цикле свое имя. Потом придется добавить синхронизацию с помощью wait() и notify().
-
+        Object lock = new Object();
+        new TwoThreads("Первый поток", lock).start();
+        new TwoThreads("Второй поток",lock).start();
     }
 
     static class RunTenThreads extends Thread {
-        RunTenThreads(String name){
+        RunTenThreads(String name) {
             super(name);
         }
 
-        public void run(){
+        public void run() {
             System.out.println("Поток под именем " + Thread.currentThread().getName() + " был запущен!");
-            for (int i = 0; 1<101; i++){ //выводит числа от 0 до 100
+            for (int i = 0; 1 < 101; i++) { //выводит числа от 0 до 100
                 try {
                     sleep(1500);
+                } catch (Exception exception) {
                 }
-                catch (Exception exception){}
             }
         }
     }
 
     //task2:
-    public static String threadState (Thread.State ts) {
+    public static String threadState(Thread.State ts) {
 
         //обработка состояния
         if (ts == Thread.State.NEW) {
             return "Поток создан, но не запущен.";
-        } if (ts == Thread.State.RUNNABLE) {
+        }
+        if (ts == Thread.State.RUNNABLE) {
             return "Поток выполняется.";
-        } if (ts == Thread.State.BLOCKED) {
+        }
+        if (ts == Thread.State.BLOCKED) {
             return "Поток приостановлен.";
         }
-        if (ts == Thread.State.TIMED_WAITING){
+        if (ts == Thread.State.TIMED_WAITING) {
             return "Ожидает определенное время";
         }
         return "WAITING";
     }
 
-    public static void ThreadCounterCountTest (){
-        //Counter counter = new Counter();
-        for (int i=1; i<11;i++){
-            new ThreadCounterCount("номер" + i).start();
+    public static void ThreadCounterCountTest() {
+        for (int i=1; i<101;i++){
+            ThreadCounterCount threadCounterCount = new ThreadCounterCount("номер" + i);
+            threadCounterCount.start();
+            //а дальше тупик...
         }
     }
+
 }
 
