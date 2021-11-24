@@ -3,6 +3,7 @@ package lab08.Parking;
 public class Vehicle {
 
     protected int occupiedPlace;
+    String name;
 
     public int getOccupiedPlace(){
         return occupiedPlace;
@@ -12,8 +13,13 @@ public class Vehicle {
         this.occupiedPlace = occupiedPlace;
     }
 
-    /*@Override
-    public String ToString(){
-        return "Транспортное средство занимает " + occupiedPlace + " у.е.";
-    }*/
+    public String getName(){
+        return name;
+    }
+
+    @Override
+    public String toString() {
+
+        return "В очереди находятся: " + name;
+    }
 }

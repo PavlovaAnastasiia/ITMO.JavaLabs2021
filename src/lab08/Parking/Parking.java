@@ -2,20 +2,20 @@ package lab08.Parking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Parking extends Vehicle{
 
-    protected int finalOccupiedPlace;
-    protected static ArrayList<Vehicle> vehicles;
+    private int finalOccupiedPlace;
+    private ArrayList<Vehicle> vehicles;
 
     public Parking (int occupiedPlace){
         super(occupiedPlace);
-
         vehicles = new ArrayList<>();
     }
 
     public boolean add(Vehicle vehicle) {
-        finalOccupiedPlace = +vehicle.getOccupiedPlace();
+        finalOccupiedPlace += vehicle.getOccupiedPlace();
 
         if (finalOccupiedPlace <= super.occupiedPlace) {
             vehicles.add(vehicle);
@@ -26,7 +26,7 @@ public class Parking extends Vehicle{
             return false;
         }
     }
-    public static void viewVehicles(){
-        System.out.println(Arrays.toString(vehicles.toArray()));
+    public void print(Vehicle vehicle) {
+        System.out.println(vehicle.toString());
     }
 }
