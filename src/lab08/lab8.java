@@ -42,7 +42,7 @@ public class lab8 {
                 new Bus(5, "Автобус Mercedes"),
                 new Motorbike(1, "Мотоцикл Nissan")};
 
-        Parking parking = new Parking(10);
+        Parking parking = new Parking(6);
         for (Vehicle vehicle : vehicles) {
             parking.add(vehicle);
         }
